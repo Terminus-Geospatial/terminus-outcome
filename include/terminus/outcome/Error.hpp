@@ -6,6 +6,8 @@
 #pragma once
 
 // C++ Includes
+#include <iostream>
+#include <sstream>
 #include <system_error>
 
 namespace tmns::outcome {
@@ -105,8 +107,17 @@ class Error
  * from our custom error object.
  */
 template <class ErrorCodeT>
-inline const std::error_code& make_error_code( std::ostream& s,
-                                               const Error<ErrorCodeT>& e )
+inline const std::error_code& make_error_code( const Error<ErrorCodeT>& e )
+{
+    return e.code();
+}
+
+/**
+ * Output stream operator that formats the error message and details when writing to
+ * a stream.
+*/
+template <class ErrorCodeT>
+inline std::ostream& operator << ( std::ostream& s, const Error<ErrorCodeT>& e )
 {
     s << e.message();
     return s;
