@@ -1,3 +1,5 @@
+Find*
+ZLIB*
 module*
 terminus*.cmake
 libback*
@@ -8,3 +10,8 @@ CMakeCache.txt
 Makefile
 CMakeUserPresets.json
 CMakePresets.json
+B*
+Ic*
+cmake_*
+cmakedeps*
+conan_tool*
