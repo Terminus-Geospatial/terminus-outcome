@@ -1,0 +1,10 @@
+module*
+terminus*.cmake
+libback*
+example
+*.sh
+CMakeFiles
+CMakeCache.txt
+Makefile
+CMakeUserPresets.json
+CMakePresets.json
