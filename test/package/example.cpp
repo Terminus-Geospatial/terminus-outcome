@@ -13,6 +13,7 @@
 // C++ Libraries
 #include <fstream>
 #include <iostream>
+#include <memory>
 #include <string>
 
 // 1 - Define a custom error code enumeration
@@ -60,6 +61,28 @@ TERMINUS_OUTCOME_ASSOCIATE_ERROR_CATEGORY( IoErrorCategory, IoErrorCode )
 template <class ValueT>
 using IoResult = tmns::outcome::Result<ValueT,IoErrorCode>;
 
+/**
+ * SImple function return a result by reference
+*/
+IoResult<int> some_func_01()
+{
+    return tmns::outcome::ok<int>( 3 );
+}
+
+struct Point
+{
+    double x;
+    double y;
+};
+
+IoResult<std::shared_ptr<Point>> some_func_02()
+{
+    auto pt = std::make_shared<Point>();
+    pt->x = 1;
+    pt->y = 2;
+    return tmns::outcome::ok<std::shared_ptr<Point>>( std::move( pt ) );
+}
+
 int main()
 {
     IoResult<std::string> readResult = tmns::outcome::ok<std::string>( "Hello World!" );
@@ -76,6 +99,10 @@ int main()
     {
         std::cout << *oMessage << std::endl;
     }
+
+    // Test functions
+    std::cout << "Function 1: " << some_func_01().assume_value() << std::endl;
+    std::cout << "Function 2: " << some_func_02().assume_value()->x << std::endl;
 
     return 0;
 }
