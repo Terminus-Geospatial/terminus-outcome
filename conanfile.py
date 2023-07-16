@@ -24,7 +24,8 @@ class ConanProject(ConanFile):
     default_options = {
         "with_tests": True,
         "with_docs": True,
-        "with_coverage": False
+        "with_coverage": False,
+        "boost/*:shared": True
     }
 
 
