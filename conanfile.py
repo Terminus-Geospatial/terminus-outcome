@@ -1,4 +1,4 @@
-from conan import ConanFile
+from conan import ConanFile, tools
 from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
 from conan.tools.files import copy
 
@@ -15,26 +15,26 @@ class ConanProject(ConanFile):
 
     settings = "os", "compiler", "build_type", "arch"
 
-    options = {
-        "with_tests": [True, False],
-        "with_docs": [True, False],
-        "with_coverage": [True, False]
+    options = { "shared": [True, False],
+                "with_tests": [True, False],
+                "with_docs": [True, False],
+                "with_coverage": [True, False]
     }
 
-    default_options = {
-        "with_tests": True,
-        "with_docs": True,
-        "with_coverage": False,
-        "boost/*:shared": True
-    }
+    default_options = { "shared": True,
+                        "with_tests": True,
+                        "with_docs": True,
+                        "with_coverage": False,
+                        "boost/*:shared": True }
 
 
     def build_requirements(self):
+        self.build_requires("gtest/1.13.0")
         self.build_requires("terminus_cmake/1.0.0")
-        self.build_requires( "gtest/1.13.0" )
 
     def requirements(self):
         self.requires("boost/1.82.0")
+        self.requires("terminus_log/0.0.1")
 
     def _configure_cmake(self):
         cmake = CMake(self)
@@ -63,6 +63,9 @@ class ConanProject(ConanFile):
     def package(self):
         cmake = self._configure_cmake()
         cmake.install()
+
+        # This will also copy the "include" folder
+        copy(self, "*.h", self.source_folder, self.package_folder)
 
     def package_info(self):
         # For header-only packages, libdirs and bindirs are not used
