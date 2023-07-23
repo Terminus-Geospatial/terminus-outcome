@@ -7,6 +7,8 @@
 find_package( GTest REQUIRED )
 include( GoogleTest )
 
+include_directories( ${CMAKE_SOURCE_DIR}/include )
+
 set( TEST ${PROJECT_NAME}_test )
 add_executable( ${TEST}
     TEST_Optional.cpp

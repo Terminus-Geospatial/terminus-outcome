@@ -49,8 +49,8 @@ add_library( ${PROJECT_NAME} INTERFACE )
 
 # Configure include paths
 target_include_directories(${PROJECT_NAME} INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>  # <prefix>/include/mylib
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/terminus>
+    $<INSTALL_INTERFACE:include/terminus>  # <prefix>/include/mylib
 )
 
 target_link_libraries( ${PROJECT_NAME} INTERFACE
@@ -67,4 +67,5 @@ endif()
 #    add_subdirectory(docs)
 #endif()
 
-install( DIRECTORY include DESTINATION include)
+#  Install Header Files
+install( DIRECTORY include/terminus DESTINATION include)

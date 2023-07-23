@@ -66,6 +66,7 @@ class ConanProject(ConanFile):
 
         # This will also copy the "include" folder
         copy(self, "*.h", self.source_folder, self.package_folder)
+        self.cpp_info.libs = tools.files.collect_libs(self)
 
     def package_info(self):
         # For header-only packages, libdirs and bindirs are not used
