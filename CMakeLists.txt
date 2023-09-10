@@ -2,7 +2,7 @@
 #    Author:  Marvin Smith
 #    Date:    7/5/2023
 #
-#    Purpose:  Build terminus-result API
+#    Purpose: Build terminus-result API
 #
 cmake_minimum_required( VERSION 3.16 FATAL_ERROR )
 

@@ -1,3 +1,6 @@
+#    File:    conanfile.py
+#    Author:  Marvin Smith
+#    Date:    7/8/2023
 from conan import ConanFile, tools
 from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
 from conan.tools.files import copy
@@ -8,12 +11,10 @@ class ConanProject(ConanFile):
     version = "0.0.1"
 
     license = "Terminus Proprietary"
-    author  = "Marvin Smith"
+    author  = "Marvin Smith <marvin_smith1@me.com>"
     url     = "https://bitbucket.org/msmith81886/terminus-outcome/src"
     description = "Modern and predictable C++ error handling"
-    topics = ()
-
-    settings = "os", "compiler", "build_type", "arch"
+    topics = ("terminus","outcome")
 
     options = { "shared": [True, False],
                 "with_tests": [True, False],
@@ -27,10 +28,11 @@ class ConanProject(ConanFile):
                         "with_coverage": False,
                         "boost/*:shared": True }
 
+    settings = "os", "compiler", "build_type", "arch"
 
     def build_requirements(self):
-        self.build_requires("gtest/1.13.0")
-        self.build_requires("terminus_cmake/1.0.0")
+        self.test_requires("gtest/1.13.0")
+        self.tool_requires("terminus_cmake/1.0.0")
 
     def requirements(self):
         self.requires("boost/1.82.0")
