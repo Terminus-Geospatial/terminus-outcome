@@ -1,3 +1,4 @@
 build
 CMakeUserPresets.cmake
 .DS_Store
+.vscode/settings.json
