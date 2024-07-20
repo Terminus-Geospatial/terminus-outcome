@@ -16,6 +16,8 @@ class ConanProject(ConanFile):
     description = "Modern and predictable C++ error handling"
     topics = ("terminus","outcome")
 
+    implements = ["auto_header_only"]
+
     options = { "shared": [True, False],
                 "with_tests": [True, False],
                 "with_docs": [True, False],
@@ -32,7 +34,7 @@ class ConanProject(ConanFile):
 
     def build_requirements(self):
         self.test_requires("gtest/1.14.0")
-        self.tool_requires("terminus_cmake/1.0.1")
+        self.tool_requires("terminus_cmake/1.0.2")
 
     def requirements(self):
         self.requires("boost/1.85.0")
@@ -76,10 +78,10 @@ class ConanProject(ConanFile):
          self.cpp_info.bindirs = []
          self.cpp_info.libdirs = []
 
-    def package_id(self):
-        self.info.clear()
-
     def export_sources(self):
 
         for p in [ "CMakeLists.txt", "include/*", "test/*", "README.md" ]:
-            copy( self, p, self.recipe_folder, self.export_sources_folder )
+            copy( self,
+                  p,
+                  self.recipe_folder,
+                  self.export_sources_folder )
