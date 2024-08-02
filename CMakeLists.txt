@@ -19,7 +19,7 @@ project( ${CONAN_PKG_NAME}
      )
 
 #  Set C++ 20 Support
-set( CMAKE_CXX_STANDARD 20 )
+set( CMAKE_CXX_STANDARD 23 )
 set( CMAKE_CXX_STANDARD_REQUIRED ON )
 
 #  Give Vscode a fighting chance
