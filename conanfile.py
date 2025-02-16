@@ -38,7 +38,6 @@ class ConanProject(ConanFile):
 
     def requirements(self):
         self.requires("boost/1.86.0")
-        self.requires("terminus_log/0.0.7")
 
     def _configure_cmake(self):
         cmake = CMake(self)

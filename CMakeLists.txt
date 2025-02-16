@@ -4,7 +4,7 @@
 #
 #    Purpose: Build terminus-result API
 #
-cmake_minimum_required( VERSION 3.16 FATAL_ERROR )
+cmake_minimum_required( VERSION 3.22 FATAL_ERROR )
 
 #  Configure Conan Search Paths
 include( "${CMAKE_BINARY_DIR}/conan_toolchain.cmake" )
@@ -12,11 +12,12 @@ set( CMAKE_FIND_PACKAGE_PREFER_CONFIG TRUE )
 
 # Set the Project-Name
 project( ${CONAN_PKG_NAME}
-            VERSION ${CONAN_PKG_VERSION}
+            VERSION      ${CONAN_PKG_VERSION}
             HOMEPAGE_URL ${CONAN_PKG_URL}
-            DESCRIPTION ${CONAN_PKG_DESCRIPTION}
-            LANGUAGES CXX
-     )
+            DESCRIPTION  ${CONAN_PKG_DESCRIPTION}
+            LANGUAGES    CXX )
+
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 #  Set C++ 20 Support
 set( CMAKE_CXX_STANDARD 23 )
