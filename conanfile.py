@@ -1,11 +1,12 @@
-############################# INTELLECTUAL PROPERTY RIGHTS #############################
-##                                                                                    ##
-##                           Copyright (c) 2024 Terminus LLC                          ##
-##                                All Rights Reserved.                                ##
-##                                                                                    ##
-##          Use of this source code is governed by LICENSE in the repo root.          ##
-##                                                                                    ##
-############################# INTELLECTUAL PROPERTY RIGHTS #############################
+#**************************** INTELLECTUAL PROPERTY RIGHTS ****************************#
+#*                                                                                    *#
+#*                           Copyright (c) 2025 Terminus LLC                          *#
+#*                                                                                    *#
+#*                                All Rights Reserved.                                *#
+#*                                                                                    *#
+#*          Use of this source code is governed by LICENSE in the repo root.          *#
+#*                                                                                    *#
+#**************************** INTELLECTUAL PROPERTY RIGHTS ****************************#
 #
 #    File:    conanfile.py
 #    Author:  Marvin Smith
@@ -18,7 +19,7 @@ from conan.tools.files import copy
 class ConanProject(ConanFile):
 
     name = "terminus_outcome"
-    version = "0.0.8"
+    version = "0.0.9"
 
     license = "Terminus Proprietary"
     author  = "Marvin Smith <marvin_smith1@me.com>"
