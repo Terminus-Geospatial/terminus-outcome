@@ -73,9 +73,9 @@ string(TIMESTAMP PROJECT_BUILD_DATE "%Y-%m-%d %H:%M:%S" )
 configure_file( ${CMAKE_SOURCE_DIR}/templates/Exports.hpp.in
                 ${CMAKE_BINARY_DIR}/include/terminus/outcome/Exports.hpp )
 
-#----------------------------------------#
-#-           Find dependencies          -#
-#----------------------------------------#
+#-------------------------------------#
+#-          Find Dependencies        -#
+#-------------------------------------#
 find_package( Boost REQUIRED )
 
 #  Enable code coverage
