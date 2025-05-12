@@ -27,6 +27,8 @@ PROJECT_VERSION="$(grep 'version = ' conanfile.py | awk '{ print $3 }' | sed 's/
 PROJECT_URL="$(grep ' url ' conanfile.py | awk '{ print $3 }' | sed 's/"//g')"
 PROJECT_DESC="Modern and predictable C++ error handling"
 
+#  Make steps
+DO_INSTALL='0'
 
 #  Set the CMake Executable
 CMAKE_EXE='cmake'
@@ -51,6 +53,8 @@ function usage()
     echo 
     echo '  -v | --verbose : Run make with VERBOSE=1'
     echo 
+    echo '  --install   : Run `make install` after build'
+    echo
 }
 
 #------------------------------------------------#
@@ -93,6 +97,10 @@ while [ $# -gt 0 ]; do
             MAKE_ARGS='VERBOSE=1'
             ;;
 
+        --install)
+            DO_INSTALL='1'
+            ;;
+
         *)
             echo "error: Unsupported flag: $1"
             ;;
@@ -118,5 +126,9 @@ ${CMAKE_EXE} -DRENDER_DRIVER="${BUILD_MODE}" \
 
 # Run Compilation
 ${MAKE_EXE} ${MAKE_ARGS}
+
+if [ "${DO_INSTALL}" == '1' ]; then
+    ${MAKE_EXE} install
+fi
 
 popd
