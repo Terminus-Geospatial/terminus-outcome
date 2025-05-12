@@ -28,26 +28,26 @@ class ConanProject(ConanFile):
 
     implements = ["auto_header_only"]
 
-    options = { "shared": [True, False],
+    options = { "render_driver": [ 'unix', 'pico', 'emsdk' ],
                 "with_tests": [True, False],
                 "with_docs": [True, False],
                 "with_coverage": [True, False]
     }
 
-    default_options = { "shared": True,
+    default_options = { "render_driver": 'unix',
                         "with_tests": True,
                         "with_docs": True,
-                        "with_coverage": False,
-                        "boost/*:shared": True }
+                        "with_coverage": False }
 
     settings = "os", "compiler", "build_type", "arch"
 
     def build_requirements(self):
-        self.test_requires("gtest/1.15.0")
-        self.tool_requires("terminus_cmake/1.0.5")
+        self.build_requires("cmake/4.0.1")
+        self.test_requires("gtest/1.16.0")
+        self.tool_requires("terminus_cmake/1.0.6")
 
     def requirements(self):
-        self.requires("boost/1.86.0")
+        self.requires("boost/1.87.0")
 
     def _configure_cmake(self):
         cmake = CMake(self)
@@ -64,6 +64,9 @@ class ConanProject(ConanFile):
         tc.variables["TERMINUS_OUTCOME_ENABLE_TESTS"]    = self.options.with_tests
         tc.variables["TERMINUS_OUTCOME_ENABLE_DOCS"]     = self.options.with_docs
         tc.variables["TERMINUS_OUTCOME_ENABLE_COVERAGE"] = self.options.with_coverage
+
+        tc.variables["SKIP_CONAN"]    = False
+        tc.variables["RENDER_DRIVER"] = self.options.render_driver
         tc.generate()
 
         deps = CMakeDeps(self)

@@ -15,7 +15,7 @@ enum class TestErrorCode { SUCCESS = 0, FIRST = 1, SECOND = 2 };
 
 TERMINUS_OUTCOME_MARK_ENUM( TestErrorCode )
 
-class TestErrorCategory : public tmns::outcome::ErrorCategory<TestErrorCategory>
+class TestErrorCategory : public tmns::outcome::Error_Category<TestErrorCategory>
 {
     protected:
         const char* name_() const noexcept override

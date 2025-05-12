@@ -7,6 +7,7 @@
 find_package( GTest REQUIRED )
 include( GoogleTest )
 
+include_directories( ${CMAKE_BINARY_DIR}/include )
 include_directories( ${CMAKE_SOURCE_DIR}/include )
 
 set( TEST ${PROJECT_NAME}_test )

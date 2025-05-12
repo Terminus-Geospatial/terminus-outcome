@@ -1,3 +1,12 @@
+/**************************** INTELLECTUAL PROPERTY RIGHTS ****************************/
+/*                                                                                    */
+/*                           Copyright (c) 2025 Terminus LLC                          */
+/*                                                                                    */
+/*                                All Rights Reserved.                                */
+/*                                                                                    */
+/*          Use of this source code is governed by LICENSE in the repo root.          */
+/*                                                                                    */
+/**************************** INTELLECTUAL PROPERTY RIGHTS ****************************/
 /**
  * @file    example.cpp
  * @author  Marvin Smith
@@ -104,5 +113,7 @@ int main()
     std::cout << "Function 1: " << some_func_01().assume_value() << std::endl;
     std::cout << "Function 2: " << some_func_02().assume_value()->x << std::endl;
 
+    std::cout << "TERMINUS_OUTCOME_VERSION_STR: " << TERMINUS_OUTCOME_VERSION_STR << std::endl;
+    std::cout << "TERMINUS_OUTCOME_BUILD_DATE: " << TERMINUS
     return 0;
 }

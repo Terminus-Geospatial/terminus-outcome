@@ -1,5 +1,14 @@
+/**************************** INTELLECTUAL PROPERTY RIGHTS ****************************/
+/*                                                                                    */
+/*                           Copyright (c) 2025 Terminus LLC                          */
+/*                                                                                    */
+/*                                All Rights Reserved.                                */
+/*                                                                                    */
+/*          Use of this source code is governed by LICENSE in the repo root.          */
+/*                                                                                    */
+/**************************** INTELLECTUAL PROPERTY RIGHTS ****************************/
 /**
- * @file    ErrorCategory.hpp
+ * @file    Error_Category.hpp
  * @author  Marvin Smith
  * @date    7/7/2023
 */
@@ -33,7 +42,7 @@ namespace tmns::outcome {
  *          the singleton instance of your derived class.  This pattern is called CRTP.
  */
 template <class DerivedErrorCategoryT>
-class ErrorCategory : public std::error_category
+class Error_Category : public std::error_category
 {
     public:
 
@@ -49,12 +58,12 @@ class ErrorCategory : public std::error_category
         /**
          * @brief Deleted to prevent more than once instance.
          */
-        ErrorCategory( const ErrorCategory& ) = delete;
+        Error_Category( const Error_Category& ) = delete;
 
         /**
          * @brief Deleted to prevent more than once instance.
          */
-        ErrorCategory& operator = ( const ErrorCategory& ) = delete;
+        Error_Category& operator = ( const Error_Category& ) = delete;
 
         /**
          * @brief Returns the human-readable name of the category.
@@ -93,12 +102,13 @@ class ErrorCategory : public std::error_category
         /**
          * @brief Private due to being a singleton
          */
-        ErrorCategory() = default;
+        Error_Category() = default;
 
         /**
          * @brief Private due to being a singleton.
         */
-        virtual ~ErrorCategory() = default;
-};
+        virtual ~Error_Category() = default;
+
+}; // End of Error_Category Class
 
 } // End of tmns::outcome namespace
