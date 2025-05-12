@@ -12,3 +12,7 @@ conan-build.bash -c
 
 This is designed for users wanting to use alternative methods of building this library.
 
+```bash
+./scripts/build-cmake.sh -c --emsdk
+```
+

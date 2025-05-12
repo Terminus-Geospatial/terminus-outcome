@@ -16,7 +16,7 @@ class OutcomePackageTestConan( ConanFile ):
     settings = "os", "compiler", "build_type", "arch"
 
     def requirements(self):
-        self.requires("terminus_outcome/0.0.7")
+        self.requires("terminus_outcome/0.0.8")
 
     def _configure_cmake(self):
         cmake = CMake(self)

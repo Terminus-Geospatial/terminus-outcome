@@ -14,10 +14,7 @@
  */
 
 // Terminus Libraries
-#include <terminus/outcome/ErrorCategory.hpp>
-#include <terminus/outcome/Optional.hpp>
-#include <terminus/outcome/Result.hpp>
-#include <terminus/outcome/macros.hpp>
+#include <terminus/outcome.hpp>
 
 // C++ Libraries
 #include <fstream>
@@ -36,7 +33,7 @@ TERMINUS_OUTCOME_MARK_ENUM( IoErrorCode )
 
 // 3 - Define a custom error category that can properly interpret the integer representation of
 //     error codes from your custom error code type.
-class IoErrorCategory : public tmns::outcome::ErrorCategory<IoErrorCategory>
+class IoErrorCategory : public tmns::outcome::Error_Category<IoErrorCategory>
 {
     protected:
 
@@ -114,6 +111,6 @@ int main()
     std::cout << "Function 2: " << some_func_02().assume_value()->x << std::endl;
 
     std::cout << "TERMINUS_OUTCOME_VERSION_STR: " << TERMINUS_OUTCOME_VERSION_STR << std::endl;
-    std::cout << "TERMINUS_OUTCOME_BUILD_DATE: " << TERMINUS
+    std::cout << "TERMINUS_OUTCOME_BUILD_DATE: " << TERMINUS_OUTCOME_BUILD_DATE << std::endl;
     return 0;
 }
