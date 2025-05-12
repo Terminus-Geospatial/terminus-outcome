@@ -8,7 +8,7 @@
 /*                                                                                    */
 /**************************** INTELLECTUAL PROPERTY RIGHTS ****************************/
 /**
- * @file    ErrorCode.hpp
+ * @file    Error_Code.hpp
  * @author  Marvin Smith
  * @date    7/10/2023
 */

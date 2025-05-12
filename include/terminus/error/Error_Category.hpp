@@ -15,7 +15,7 @@
 #pragma once
 
 // Terminus Libraries
-#include <terminus/outcome/ErrorCategory.hpp>
+#include <terminus/outcome/Error_Category.hpp>
 #include <terminus/outcome/Result.hpp>
 #include <terminus/outcome/macros.hpp>
 
