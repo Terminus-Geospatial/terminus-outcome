@@ -1,0 +1,24 @@
+/**************************** INTELLECTUAL PROPERTY RIGHTS ****************************/
+/*                                                                                    */
+/*                           Copyright (c) 2025 Terminus LLC                          */
+/*                                                                                    */
+/*                                All Rights Reserved.                                */
+/*                                                                                    */
+/*          Use of this source code is governed by LICENSE in the repo root.          */
+/*                                                                                    */
+/**************************** INTELLECTUAL PROPERTY RIGHTS ****************************/
+/**
+ * @file    Exports.hpp
+ * @author  Marvin Smith
+ * @date    @PROJECT_BUILD_DATE@
+*/
+#pragma once
+
+// Version Information
+#define TERMINUS_OUTCOME_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define TERMINUS_OUTCOME_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define TERMINUS_OUTCOME_VERSION_PATCH @PROJECT_VERSION_PATCH@
+#define TERMINUS_OUTCOME_VERSION_STR  "@PROJECT_VERSION@"
+
+//  Build Date
+#define TERMINUS_OUTCOME_BUILD_DATE "@PROJECT_BUILD_DATE@"

@@ -1,6 +1,16 @@
+############################# INTELLECTUAL PROPERTY RIGHTS #############################
+##                                                                                    ##
+##                           Copyright (c) 2024 Terminus LLC                          ##
+##                                All Rights Reserved.                                ##
+##                                                                                    ##
+##          Use of this source code is governed by LICENSE in the repo root.          ##
+##                                                                                    ##
+############################# INTELLECTUAL PROPERTY RIGHTS #############################
+#
 #    File:    conanfile.py
 #    Author:  Marvin Smith
 #    Date:    7/8/2023
+#
 from conan import ConanFile, tools
 from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
 from conan.tools.files import copy
@@ -8,11 +18,11 @@ from conan.tools.files import copy
 class ConanProject(ConanFile):
 
     name = "terminus_outcome"
-    version = "0.0.6"
+    version = "0.0.7"
 
     license = "Terminus Proprietary"
     author  = "Marvin Smith <marvin_smith1@me.com>"
-    url     = "https://bitbucket.org/msmith81886/terminus-outcome/src"
+    url     = "git@github.com:Terminus-Geospatial/terminus-outcome.git"
     description = "Modern and predictable C++ error handling"
     topics = ("terminus","outcome")
 

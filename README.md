@@ -2,6 +2,13 @@
 
 ## Build Instructions
 
+### Using `conan`
 
-### Notes for Raspberry Pi Users
+```bash
+conan-build.bash -c
+```
+
+### Using `build-cmake.sh`
+
+This is designed for users wanting to use alternative methods of building this library.
 
