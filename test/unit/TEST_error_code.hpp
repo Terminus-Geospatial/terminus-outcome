@@ -24,9 +24,13 @@ enum class TestErrorCode { SUCCESS = 0, FIRST = 1, SECOND = 2 };
 
 TERMINUS_OUTCOME_MARK_ENUM( TestErrorCode )
 
+/**
+ * @brief Error Category for TestErrorCode
+ */
 class outcome_Error_Category : public tmns::outcome::Error_Category<outcome_Error_Category>
 {
     protected:
+    
         const char* name_() const noexcept override
         {
             return "TestError";

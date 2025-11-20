@@ -8,23 +8,24 @@
 /*                                                                                    */
 /**************************** INTELLECTUAL PROPERTY RIGHTS ****************************/
 /**
- * @file    macros.hpp
+ * @file    result.hpp
  * @author  Marvin Smith
  * @date    7/7/2023
 */
 #pragma once
 
-// Project Libraries
-#include <terminus/outcome/error.hpp>
+// C++ Standard Libraries
+#include <future>
+#include <system_error>
+#include <type_traits>
+#include <utility>
 
 // Boost Libraries
 #include <boost/outcome/result.hpp>
 #include <boost/outcome/utils.hpp>
 
-// C++ Libraries
-#include <future>
-#include <system_error>
-#include <type_traits>
+// Terminus Libraries
+#include <terminus/outcome/error.hpp>
 
 // Namespace alias for the boost outcome namespace
 namespace tmns::outcome::impl {
