@@ -23,16 +23,10 @@ if( "${SKIP_CONAN}" STREQUAL "1" )
 else()
      #  Configure Conan Search Paths
      include( "${CMAKE_BINARY_DIR}/conan_toolchain.cmake" )
-     
+
 endif()
 set( CMAKE_FIND_PACKAGE_PREFER_CONFIG TRUE )
 
-
-#  Pull in the Pico SDK if we are using it
-if( ${RENDER_DRIVER} STREQUAL "pico" )
-    message( "Import PICO SDK: ${PICO_SDK_PATH}" )
-    include( "$ENV{PICO_SDK_PATH}/pico_sdk_init.cmake" )
-endif()
 
 # Set the Project-Name
 project( ${CONAN_PKG_NAME}
@@ -41,27 +35,19 @@ project( ${CONAN_PKG_NAME}
             DESCRIPTION  ${CONAN_PKG_DESCRIPTION}
             LANGUAGES    CXX )
 
-set( CMAKE_POSITION_INDEPENDENT_CODE ON )
-
 #  Define C++ Level
 set( CMAKE_CXX_STANDARD 23 )
 set( CMAKE_CXX_STANDARD_REQUIRED ON )
 
 #  Give Vscode a fighting chance
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set( CMAKE_EXPORT_COMPILE_COMMANDS ON )
 
-message( "Application Platform: ${RENDER_DRIVER}" )
+# Bring in CMake helpers for TERMINUS projects
+include( terminus_cmake )
 
-# Setup libdl for debug GCC builds
-if( CMAKE_BUILD_TYPE STREQUAL "debug" OR CMAKE_BUILD_TYPE STREQUAL "Debug" )
-    if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
-        set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -rdynamic -ldl" )
-    endif()
-
-#  Set Really Strict Compiler Settings
-set(CMAKE_COMPILE_WARNING_AS_ERROR ON)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -pedantic-errors -Wall -Wextra -Wconversion -Wsign-conversion")
-endif()
+#  Treat warnings as errors
+set( CMAKE_COMPILE_WARNING_AS_ERROR ON )
+set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror" )
 
 
 #----------------------------------------#
@@ -70,8 +56,8 @@ endif()
 # Get the current date
 string(TIMESTAMP PROJECT_BUILD_DATE "%Y-%m-%d %H:%M:%S" )
 
-configure_file( ${CMAKE_SOURCE_DIR}/templates/Exports.hpp.in
-                ${CMAKE_BINARY_DIR}/include/terminus/outcome/Exports.hpp )
+configure_file( ${CMAKE_SOURCE_DIR}/templates/exports.hpp.in
+                ${CMAKE_BINARY_DIR}/include/terminus/outcome/exports.hpp )
 
 #-------------------------------------#
 #-          Find Dependencies        -#
@@ -83,13 +69,7 @@ if( TERMINUS_OUTCOME_ENABLE_COVERAGE )
      terminus_coverage_enable()
 endif()
 
-add_library( ${PROJECT_NAME} INTERFACE )
-
-# Configure include paths
-target_include_directories(${PROJECT_NAME} INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/terminus>
-    $<INSTALL_INTERFACE:include/terminus>  # <prefix>/include/mylib
-)
+terminus_lib_create_header_only()
 
 target_link_libraries( ${PROJECT_NAME} INTERFACE
      Boost::headers
@@ -106,5 +86,4 @@ endif()
 #endif()
 
 #  Install Header Files
-install( DIRECTORY ${PROJECT_SOURCE_DIR}/include/terminus DESTINATION include)
 install( DIRECTORY ${PROJECT_BINARY_DIR}/include/terminus DESTINATION include )

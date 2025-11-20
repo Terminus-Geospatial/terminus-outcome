@@ -19,7 +19,7 @@ from conan.tools.files import copy
 class ConanProject(ConanFile):
 
     name = "terminus_outcome"
-    version = "0.0.9"
+    version = "0.0.10"
 
     license = "Terminus Proprietary"
     author  = "Marvin Smith <marvin_smith1@me.com>"
@@ -29,26 +29,24 @@ class ConanProject(ConanFile):
 
     implements = ["auto_header_only"]
 
-    options = { "render_driver": [ 'unix', 'pico', 'emsdk' ],
-                "with_tests": [True, False],
+    options = { "with_tests": [True, False],
                 "with_docs": [True, False],
                 "with_coverage": [True, False]
     }
 
-    default_options = { "render_driver": 'unix',
-                        "with_tests": True,
+    default_options = { "with_tests": True,
                         "with_docs": True,
                         "with_coverage": False }
 
     settings = "os", "compiler", "build_type", "arch"
 
     def build_requirements(self):
-        self.build_requires("cmake/4.0.1")
-        self.test_requires("gtest/1.16.0")
-        self.tool_requires("terminus_cmake/1.0.6")
+        self.build_requires("cmake/4.1.2")
+        self.test_requires("gtest/1.17.0")
+        self.tool_requires("terminus_cmake/1.0.7")
 
     def requirements(self):
-        self.requires("boost/1.87.0")
+        self.requires("boost/1.89.0")
 
     def _configure_cmake(self):
         cmake = CMake(self)
@@ -66,8 +64,6 @@ class ConanProject(ConanFile):
         tc.variables["TERMINUS_OUTCOME_ENABLE_DOCS"]     = self.options.with_docs
         tc.variables["TERMINUS_OUTCOME_ENABLE_COVERAGE"] = self.options.with_coverage
 
-        tc.variables["SKIP_CONAN"]    = False
-        tc.variables["RENDER_DRIVER"] = self.options.render_driver
         tc.generate()
 
         deps = CMakeDeps(self)

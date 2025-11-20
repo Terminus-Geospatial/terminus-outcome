@@ -15,7 +15,7 @@
 #pragma once
 
 // Project Libraries
-#include "Error.hpp"
+#include <terminus/outcome/error.hpp>
 
 // Boost Libraries
 #include <boost/outcome/result.hpp>

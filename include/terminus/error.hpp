@@ -14,6 +14,6 @@
  */
 #pragma once
 
-#include <terminus/error/Error_Category.hpp>
-#include <terminus/error/Error_Code.hpp>
+#include <terminus/error/error_category.hpp>
+#include <terminus/error/error_code.hpp>
 

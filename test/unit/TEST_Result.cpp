@@ -9,7 +9,7 @@
 #include <terminus/outcome.hpp>
 
 // Local Includes
-#include "TestErrorCode.hpp"
+#include "TEST_error_code.hpp"
 
 template <class ValueT>
 using Result = tmns::outcome::Result<ValueT, TestErrorCode>;

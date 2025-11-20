@@ -14,10 +14,10 @@
  */
 #pragma once
 
-#include <terminus/outcome/Exports.hpp>
-#include <terminus/outcome/Error.hpp>
-#include <terminus/outcome/Error_Category.hpp>
+#include <terminus/outcome/exports.hpp>
+#include <terminus/outcome/error.hpp>
+#include <terminus/outcome/error_category.hpp>
 #include <terminus/outcome/macros.hpp>
-#include <terminus/outcome/Optional.hpp>
-#include <terminus/outcome/Result.hpp>
+#include <terminus/outcome/optional.hpp>
+#include <terminus/outcome/result.hpp>
 

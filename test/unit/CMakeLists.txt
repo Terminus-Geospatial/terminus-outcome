@@ -12,8 +12,10 @@ include_directories( ${CMAKE_SOURCE_DIR}/include )
 
 set( TEST ${PROJECT_NAME}_test )
 add_executable( ${TEST}
-    TEST_Optional.cpp
-    TEST_Result.cpp
+    TEST_optional.cpp
+    TEST_result.cpp
+    TEST_error.cpp
+    TEST_error_code.hpp
 )
 
 target_link_libraries( ${TEST} PRIVATE

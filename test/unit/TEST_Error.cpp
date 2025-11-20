@@ -1,5 +1,14 @@
+//**************************** INTELLECTUAL PROPERTY RIGHTS ****************************//
+//*                                                                                    *//
+//*                           Copyright (c) 2025 Terminus LLC                          *//
+//*                                                                                    *//
+//*                                All Rights Reserved.                                *//
+//*                                                                                    *//
+//*          Use of this source code is governed by LICENSE in the repo root.          *//
+//*                                                                                    *//
+//**************************** INTELLECTUAL PROPERTY RIGHTS ****************************//
 /**
- * @file    TEST_Error.cpp
+ * @file    TEST_error.cpp
  * @author  Marvin Smith
  * @date    7/8/2023
  */
@@ -7,6 +16,8 @@
 
 // Terminus Libraries
 #include <terminus/outcome.hpp>
+
+#include "TEST_error_code.hpp"
 
 /****************************************/
 /*          Test the Error Class        */
