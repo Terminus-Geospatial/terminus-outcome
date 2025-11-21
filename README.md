@@ -66,13 +66,29 @@ cd build
 ctest --output-on-failure
 ```
 
-## Conan Package Verification
+### Conan Package Verification
 
 ```bash
 conan test test/package/conanfile.py terminus_outcome/<version>@
 ```
 
 Replace `<version>` with the package version you are validating.
+
+### Example Output
+```bash
+$ ./example
+Hello World!
+Hello World
+Function 1: 3
+Function 2: 1
+Terminus Outcome Build Information:
+TERMINUS_OUTCOME_BUILD_DATE: 2025-11-20 19:47:09
+TERMINUS_OUTCOME_GIT_COMMIT_HASH:
+TERMINUS_OUTCOME_VERSION_MAJOR: 0
+TERMINUS_OUTCOME_VERSION_MINOR: 0
+TERMINUS_OUTCOME_VERSION_PATCH: 11
+TERMINUS_OUTCOME_VERSION_STR: 0.0.11
+```
 
 ## Basic Usage
 

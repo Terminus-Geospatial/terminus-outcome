@@ -20,6 +20,7 @@
 #include <fstream>
 #include <iostream>
 #include <memory>
+#include <sstream>
 #include <string>
 
 // 1 - Define a custom error code enumeration
@@ -110,7 +111,15 @@ int main()
     std::cout << "Function 1: " << some_func_01().assume_value() << std::endl;
     std::cout << "Function 2: " << some_func_02().assume_value()->x << std::endl;
 
-    std::cout << "TERMINUS_OUTCOME_VERSION_STR: " << TERMINUS_OUTCOME_VERSION_STR << std::endl;
-    std::cout << "TERMINUS_OUTCOME_BUILD_DATE: " << TERMINUS_OUTCOME_BUILD_DATE << std::endl;
+    // Get build information and log this
+    auto build_info = tmns::outcome::get_build_info();
+    std::stringstream ss;
+    ss << "Terminus Outcome Build Information:\n";
+    for( const auto& [key, value] : build_info )
+    {
+        ss << key << ": " << value << "\n";
+    }
+    std::cout << ss.str() << std::endl;
+
     return 0;
 }
